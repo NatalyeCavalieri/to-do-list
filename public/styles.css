@@ -10,8 +10,10 @@
   font-size: 62.5%;
   --font-title: "Rubik Lines", system-ui;
   --font-text: "Inter", sans-serif;
+
   --bg-blue: #7371fc;
   --bg-winkle: #cdc1ff;
+  
   --color-white: white;
   --color-purple: #e5d9f2;
   --color-red: rgb(248, 4, 4);
@@ -24,7 +26,8 @@ body {
 }
 
 #app {
-  background-color: var(--bg-winkle);
+background: rgb(119,191,238);
+background: linear-gradient(0deg, rgba(119,191,238,0.6755077030812324) 4%, rgba(223,174,223,0.7707457983193278) 92%);
   width: 100%;
   height: 100vh;
   padding-top: 5rem;
@@ -63,7 +66,7 @@ header i:hover {
   width: 45%;
   max-height: max-content;
   margin: 0 auto;
-  background-color: var(--color-purple);
+  background-color: transparent;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -105,9 +108,9 @@ main p {
   -moz-appearance: none;
   width: 1.5rem;
   height: 1.5rem;
-  border: 2px solid var(--bg-blue);
+  border: .2rem solid var(--bg-blue);
   border-radius: 20%;
-  background-color: var(--color-purple);
+  background-color: transparent;
   cursor: pointer;
   position: relative;
 }
@@ -118,8 +121,8 @@ main p {
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: rgb(15, 206, 15);
-  font-size: large;
+  color: rgb(18, 100, 18);
+  font-size: larger;
 }
 
 
@@ -140,8 +143,10 @@ border-radius: 2rem;
 
 #add i{
   margin-bottom: 2rem;
+  margin-left: 1rem;
   color: var(--bg-blue);
   cursor: pointer;
+  font-size: 1.8rem;
 }
 
 #add i:hover{
@@ -155,7 +160,7 @@ button{
   border-radius: 30%;
   color: var(--color-white);
   cursor: pointer;
-  
+  margin-left: 2.5rem;
 }
 
 button:hover{
@@ -167,9 +172,6 @@ input{
   border: .1rem solid var(--bg-blue);
   border-radius: 1rem;
   padding: 1rem;
+  margin-left: 1rem;
 }
 
-.addTarefa{
-  display: flex;
-  gap: 2rem;
-}
