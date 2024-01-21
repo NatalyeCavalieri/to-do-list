@@ -20,16 +20,36 @@ exit.addEventListener("click", (e) => {
   pageAdd.style.display = "none"
 })
 
+ function createTaskElement(task) {
+   const newRowTask = document.createElement("div")
+   newRowTask.classList.add("row")
+   newRowTask.innerHTML = `
+    <input type="checkbox">
+    <p>${task.task}</p>
+    <i class="ph ph-trash"></i>
+  `
+
+   newRowTask.querySelector("input").checked = task.completed
+
+   newRowTask.querySelector("input").addEventListener("change", (e) => {
+     updateTaskStatus(task.task, e.target.checked)
+   })
+
+   return newRowTask
+ }
+ function updateTaskStatus(taskName, completed) {
+   tasks.forEach((task) => {
+     if (task.task === taskName) {
+       task.completed = completed
+       localStorage.setItem("tasks", JSON.stringify(tasks))
+     }
+   })
+ }
+
   if(tasks.length > 0 ){
     tasks.forEach((task) =>{
-      const newRowTask = document.createElement("div")
-      newRowTask.classList.add("row")
-      newRowTask.innerHTML = `
-      <input type="checkbox">
-      <p>${task}</p>
-      <i class="ph ph-trash"></i>
-    `;
 
+    const newRowTask = createTaskElement(task)
     taskRow.appendChild(newRowTask);
 
     const iconDelete = newRowTask.querySelector(".row i");
@@ -38,7 +58,7 @@ exit.addEventListener("click", (e) => {
       newRowTask.remove();
 
       
-      const taskIndex = tasks.indexOf(task);
+      const taskIndex = tasks.findIndex((t)=> t.task === task.task);
       if (taskIndex !== -1) {
         tasks.splice(taskIndex, 1);
         localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -65,9 +85,13 @@ addButton.addEventListener("click", (e) => {
     document.querySelector("#inTask").value = "";
 
     
-    tasks.push(newTask);
+    tasks.push({task: newTask, completed: false});
     localStorage.setItem("tasks", JSON.stringify(tasks));
+    newRowTask.querySelector("input").addEventListener("change", (e) => {
+      updateTaskStatus(newTask, e.target.checked)
+    })
 
+    
     const iconDelete = newRowTask.querySelector(".row i");
     iconDelete.addEventListener("click", (e) => {
       e.preventDefault();
@@ -82,5 +106,4 @@ addButton.addEventListener("click", (e) => {
     });
   }
 });
-   
-
+  
