@@ -127,7 +127,7 @@ main p {
 
 #add{
 height: 10rem;
-width: 25%;
+width: 30rem;
 display: flex;
 margin: 0 auto;
 flex-direction: column;
@@ -201,5 +201,10 @@ header{
 
 header span {
   font-size: 1.8rem;
+}
+
+#add{
+height: 10rem;
+width: 30rem;
 }
 }

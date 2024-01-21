@@ -57,8 +57,8 @@ exit.addEventListener("click", (e) => {
       e.preventDefault();
       newRowTask.remove();
 
-      
-      const taskIndex = tasks.findIndex((t)=> t.task === task.task);
+      const taskName = newRowTask.querySelector("p").textContent
+      const taskIndex = tasks.findIndex((t)=> t.task === taskName);
       if (taskIndex !== -1) {
         tasks.splice(taskIndex, 1);
         localStorage.setItem("tasks", JSON.stringify(tasks));
